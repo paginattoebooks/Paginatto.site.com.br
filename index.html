@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Paginatto — O mundo dos eBooks</title>
+  <meta name="description"
+    content="Ebooks autorais 100% digitais. Acesso imediato, sem frete. Conheça a coleção TABIB.">
+  <style>
+    .video-capa{
+  width:100%;
+  height:420px;       /* altura fixa do vídeo de capa */
+  overflow:hidden;
+}
+
+.video-capa video{
+  width:100%;
+  height:100%;
+  object-fit:cover;   /* mantém proporção e corta o excesso */
+  display:block;
+}
+    :root {
+      --sage: #0C4160;
+      /* primária */
+      --deep: #0097B2;
+      /* secundária */
+      --white: #FFFFFF;
+      --black: #111111;
+      --mint: #CFECE6;
+      /* apoio claro */
+      --sand: #E9E4DC;
+      /* apoio claro 2 */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      color: var(--white);
+      background: linear-gradient(90deg, var(--deep) 0%, var(--sage) 100%);
+      background-attachment: fixed;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--sage);
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+    }
+
+    header .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 0;
+    }
+
+    h1.logo {
+      font-weight: 900;
+      letter-spacing: .02em;
+      font-size: 34px;
+    }
+
+    nav a {
+      color: var(--white);
+      margin-left: 18px;
+      opacity: .9;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 24px;
+      padding: 36px 0;
+    }
+
+    .title {
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1.05;
+    }
+
+    .sub {
+      margin-top: 10px;
+      opacity: .9;
+    }
+
+    .cta {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--sand);
+      color: var(--deep);
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+    }
+
+    .btn-outline {
+      border: 1px solid var(--mint);
+      padding: 12px 18px;
+      border-radius: 14px;
+    }
+
+    .panel {
+      border: 1px solid rgba(255, 255, 255, .15);
+      background: rgba(255, 255, 255, .06);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    /* Grid 3 por linha, cards alinhados */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(255, 255, 255, .15);
+      background: rgba(255, 255, 255, .06);
+      border-radius: 22px;
+      overflow: hidden;
+    }
+
+    .media {
+      padding: 12px 12px 0 12px;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+
+    .content {
+      padding: 14px 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .desc {
+      opacity: .9;
+      min-height: 48px;
+    }
+
+    .row {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .price {
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .tag {
+      margin-top: 8px;
+      font-size: 12px;
+      opacity: .9;
+    }
+
+    footer {
+      margin-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, .2);
+      padding: 18px 0;
+      background: rgba(0, 0, 0, .25);
+    }
+
+    /* Responsivo */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+</style>
+
+
+</head>
+
+<body>
+
+  <header>
+  <div class="container row">
+    <h1 class="logo">PAGINATTO</h1>
+    <nav>
+      <a href="#produtos">Produtos</a>
+      <a href="#como">Como funciona</a>
+      <a href="#suporte">Suporte</a>
+    </nav>
+  </div>
+</header>
+
+<!-- VÍDEO CAPA entre logo e hero -->
+<section class="video-capa">
+  <video autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
+    <source src="VIDEO CAPA.mp4" type="video/mp4">
+  </video>
+</section>
+
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h2 class="title">Conhecimento 100% digital. Acesso imediato.</h2>
+        <p class="sub">Coleções autorais TABIB com soluções naturais e práticas para sua saúde.</p>
+        <div class="cta">
+          <a href="#produtos" class="btn-primary">Explorar coleção TABIB</a>
+          <a href="#como" class="btn-outline">Como funciona</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="grid" style="grid-template-columns:repeat(3,1fr); gap:14px;">
+        <div>🕒 <strong>Entrega imediata</strong><br>Receba no e-mail em segundos.</div>
+        <div>♻️ <strong>Sustentável</strong><br>Zero frete, zero papel.</div>
+        <div>✅ <strong>Atualizações incluídas</strong><br>Bônus chegam automaticamente.</div>
+      </div>
+    </section>
+
+    <section id="produtos" style="padding-left:0; padding-right:0;">
+      <h2 style="margin-top:24px; font-size:28px; font-weight:900;">Nossos eBooks</h2>
+      <p style="opacity:.9">Seleção autoral com entrega instantânea. Sem frete, sem espera.</p>
+
+      <div class="grid">
+        <!-- CARD 1 -->
+        <article class="card">
+          <div class="media"><img class="card-img" src="C:\\Users\\User\\Desktop\\Paginatto-site\\foto site\\1.png" alt="Tabib Volume 1: Dores e Inflamações">
+          </div>
+          <div class="content">
+            <h3>Tabib Volume 1: Dores e Inflamações</h3>
+            <p class="desc">Receitas naturais para dores de cabeça, musculares e articulares.</p>
+            <div class="row">
+              <span class="price">R$ 4,99</span>
+              <a class="btn-primary" target="_blank" rel="noreferrer"
+                href="https://somasoundsolutions.mycartpanda.com/checkout/166919679:1">Comprar</a>
+            </div>
+            <p class="tag">Produto 100% digital — acesso imediato</p>
+          </div>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="card">
+          <div class="media"><img class="card-img" src="C:\\Users\\User\\Desktop\\Paginatto-site\\foto site\\2.png"
+              alt="Tabib Volume 2: Respiratória e Imunidade"></div>
+          <div class="content">
+            <h3>Tabib Volume 2: Respiratória e Imunidade</h3>
+            <p class="desc">Foco em sinusite, rinite e fortalecimento do sistema imune.</p>
+            <div class="row">
+              <span class="price">R$ 4,99</span>
+              <a class="btn-primary" target="_blank" rel="noreferrer"
+                href="https://somasoundsolutions.mycartpanda.com/checkout/166919682:1">Comprar</a>
+            </div>
+            <p class="tag">Produto 100% digital — acesso imediato</p>
+          </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="card">
+          <div class="media"><img class="card-img" src="C:\\Users\\User\\Desktop\\Paginatto-site\\foto site\\3.png"
+              alt="Tabib Volume 3: Digestiva e Metabólica"></div>
+          <div class="content">
+            <h3>Tabib Volume 3: Digestiva e Metabólica</h3>
+            <p class="desc">Equilíbrio digestivo e suporte ao metabolismo.</p>
+            <div class="row">
+              <span class="price">R$ 4,99</span>
+              <a class="btn-primary" target="_blank" rel="noreferrer"
+                href="https://somasoundsolutions.mycartpanda.com/checkout/166919686:1">Comprar</a>
+            </div>
+            <p class="tag">Produto 100% digital — acesso imediato</p>
+          </div>
+        </article>
+
+        <!-- CARD 4 -->
+        <article class="card">
+          <div class="media"><img class="card-img" src="C:\\Users\\User\\Desktop\\Paginatto-site\\foto site\\4.png"
+              alt="Tabib Volume 4: Saúde Mental e Energética"></div>
+          <div class="content">
+            <h3>Tabib Volume 4: Saúde Mental e Energética</h3>
+            <p class="desc">Receitas externas para bem-estar, sono e energia.</p>
+            <div class="row">
+              <span class="price">R$ 4,99</span>
+              <a class="btn-primary" target="_blank" rel="noreferrer"
+                href="https://somasoundsolutions.mycartpanda.com/checkout/166919707:1">Comprar</a>
+            </div>
+            <p class="tag">Produto 100% digital — acesso imediato</p>
+          </div>
+        </article>
+
+        <!-- CARD 5 -->
+        <article class="card">
+          <div class="media"><img class="card-img" src="C:\\Users\\User\\Desktop\\Paginatto-site\\foto site\\5.png" alt="Tabib Completo"></div>
+          <div class="content">
+            <h3>Tabib Completo</h3>
+            <p class="desc">Coleção completa organizada por áreas de tratamento.</p>
+            <div class="row">
+              <span class="price">R$ 16,99</span>
+              <a class="btn-primary" target="_blank" rel="noreferrer"
+                href="https://somasoundsolutions.mycartpanda.com/checkout/184229277:1">Comprar</a>
+            </div>
+            <p class="tag">Produto 100% digital — acesso imediato</p>
+          </div>
+        </article>
+
+        <!-- CARD 6 -->
+        <article class="card">
+          <div class="media"><img class="card-img" src="../foto site/tabib 2.0.webp" alt="Tabib 2025 + Tabib 2024"></div>
+          <div class="content">
+            <h3>Tabib 2025 + Tabib 2024</h3>
+            <p class="desc">Combo especial com 960 receitas.</p>
+            <div class="row">
+              <span class="price">R$ 19,99</span>
+              <a class="btn-primary" target="_blank" rel="noreferrer"
+                href="https://somasoundsolutions.mycartpanda.com/checkout/184229263:1">Comprar</a>
+            </div>
+            <p class="tag">Produto 100% digital — acesso imediato</p>
+          </div>
+        </article>
+
+        <!-- CARD 7 -->
+        <article class="card">
+          <div class="media"><img class="card-img" src="../foto site/antidoto.webp" alt="Antídoto — Antídotos indígenas"></div>
+          <div class="content">
+            <h3>Antídoto — Antídotos indígenas</h3>
+            <p class="desc">Soluções naturais inspiradas na medicina ancestral.</p>
+            <div class="row">
+              <span class="price">R$ 5,99</span>
+              <a class="btn-primary" target="_blank" rel="noreferrer"
+                href="https://somasoundsolutions.mycartpanda.com/checkout/166919637:1">Comprar</a>
+            </div>
+            <p class="tag">Produto 100% digital — acesso imediato</p>
+          </div>
+        </article>
+
+        <!-- CARD 8 -->
+        <article class="card">
+          <div class="media"><img class="card-img" src="../foto site/kurimã.webp" alt="Kurimã — Óleos essenciais"></div>
+          <div class="content">
+            <h3>Kurimã — Óleos essenciais</h3>
+            <p class="desc">Guia prático de uso de óleos essenciais.</p>
+            <div class="row">
+              <span class="price">R$ 4,90</span>
+              <a class="btn-primary" target="_blank" rel="noreferrer"
+                href="https://somasoundsolutions.mycartpanda.com/checkout/166919661:1">Comprar</a>
+            </div>
+            <p class="tag">Produto 100% digital — acesso imediato</p>
+          </div>
+        </article>
+
+        <!-- CARD 9 -->
+        <article class="card">
+          <div class="media"><img class="card-img" src="../foto site/Balsamo.webp" alt="Bálsamo — Pomadas naturais"></div>
+          <div class="content">
+            <h3>Bálsamo — Pomadas naturais</h3>
+            <p class="desc">Receitas exclusivas de pomadas para várias finalidades.</p>
+            <div class="row">
+              <span class="price">R$ 3,90</span>
+              <a class="btn-primary" target="_blank" rel="noreferrer"
+                href="https://somasoundsolutions.mycartpanda.com/checkout/166919668:1">Comprar</a>
+            </div>
+            <p class="tag">Produto 100% digital — acesso imediato</p>
+          </div>
+        </article>
+      
+
+        <!-- CARD 10 -->
+        <article class="card">
+          <div class="media"><img class="card-img" src="C:\\Users\\User\\Desktop\\Paginatto-site\\foto site\\pressão alta.png" alt="Tratamento Natural Personalizado para Pressão Alta"></div>
+          <div class="content">
+            <h3>Tratamento Natural Personalizado para Pressão Alta</h3>
+            <p class="desc">Nosso Tratamento Natural Personalizado foi desenvolvido para quem deseja controlar a pressão alta de forma segura, eficaz e sem depender apenas de remédios..</p>
+            <div class="row">
+              <span class="price">R$ 47,90</span>
+              <a class="btn-primary" target="_blank" rel="noreferrer"
+                href="https://somasoundsolutions.mycartpanda.com/checkout/174502432:1">Comprar</a>
+            </div>
+            <p class="tag">Produto 100% digital — acesso imediato</p>
+          </div>
+        </article>
+  
+
+        <!-- CARD 11 -->
+        <article class="card">
+          <div class="media"><img class="card-img" src="C:\Users\User\Desktop\Paginatto-site\foto site\airfair.png" alt="300 receitas para AirFryer"></div>
+          <div class="content">
+            <h3>300 receitas para AirFryer</h3>
+            <p class="desc">300 receitas rápidas, gostosas e fáceis para fazer na airfryer.</p>
+            <div class="row">
+              <span class="price">R$ 19,90</span>
+              <a class="btn-primary" target="_blank" rel="noreferrer"
+                href="https://somasoundsolutions.mycartpanda.com/checkout/176702038:1">Comprar</a>
+            </div>
+            <p class="tag">Produto 100% digital — acesso imediato</p>
+          </div>
+        </article>
+      
+
+    <section id="como" class="panel" style="margin-top:24px;">
+      <h3 style="font-weight:900; font-size:22px;">Como funciona</h3>
+      <ol style="margin-top:8px; padding-left:18px; line-height:1.7;">
+        <li>Escolha o eBook.</li>
+        <li>Pague com segurança no checkout.</li>
+        <li>Receba imediatamente por e-mail.</li>
+      </ol>
+      <p style="margin-top:8px; font-size:12px; opacity:.9;">Produto 100% digital — não há envio físico.</p>
+    </section>
+  </main>
+
+  <footer id="suporte">
+    <div class="container row" style="justify-content:space-between;">
+      <div>
+        <div><strong>Suporte</strong></div>
+        <div>Email: <a href="mailto:paginattoebooks@gmail.com">paginattoebooks@gmail.com</a></div>
+        <div>Instagram: <a href="https://instagram.com/Paginatto" target="_blank" rel="noreferrer">@Paginatto</a></div>
+      </div>
+      <div style="opacity:.8;">© Paginatto — O mundo dos eBooks</div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
